@@ -1,0 +1,20 @@
+version: '3'
+# each key in the 'services' object represents a different container that we want to run
+services:
+  # node process
+  web: 
+    build: . # path to your current working directory (path to 'Dockerfile')
+    ports:
+      - "8080:8080"
+
+  # mysql process
+  db:
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db-data:/foo
+
+# defines a volume to store the database across multiple containers	
+volumes:
+  db-data: 
